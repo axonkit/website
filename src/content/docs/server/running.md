@@ -6,7 +6,15 @@ description: Configuration and command-line flags for the AxonKit server.
 ## Prerequisites
 
 - Go 1.25+
-- mediasoup system dependencies (C++ build tools for the mediasoup worker)
+- A prebuilt `mediasoup-worker` v3.32.2 binary from the
+  [mediasoup releases](https://github.com/versatica/mediasoup/releases) — no
+  C++ build environment is required:
+
+  ```bash
+  curl -LO https://github.com/versatica/mediasoup/releases/download/3.32.2/mediasoup-worker-3.32.2-linux-x64-kernel6.tgz
+  tar xzf mediasoup-worker-3.32.2-linux-x64-kernel6.tgz
+  chmod +x mediasoup-worker
+  ```
 
 A NATS server is optional — when `-nats` is unset, each node starts an embedded
 in-process NATS server with JetStream.
@@ -51,6 +59,7 @@ fast at startup):
 | `-cluster` | Cluster name (e.g. `NewYork`) |
 | `-region` | Region name (e.g. `US`) |
 | `-port` | HTTP/WebRTC listen port (default `7880`) |
+| `-worker` | Path to the `mediasoup-worker` binary (default `./mediasoup-worker`) |
 | `-api-key` | API credential key (required outside `-dev`) |
 | `-api-secret` | API credential secret (required outside `-dev`) |
 | `-nats` | External NATS URL; omit to use the embedded server |

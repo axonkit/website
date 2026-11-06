@@ -9,7 +9,10 @@ TypeScript client SDK.
 ## Prerequisites
 
 - Go 1.25+
-- mediasoup system dependencies (C++ build tools for the mediasoup worker)
+- A prebuilt `mediasoup-worker` v3.32.2 binary from the
+  [mediasoup releases](https://github.com/versatica/mediasoup/releases) — no
+  C++ build environment is required. Place it at `./mediasoup-worker` (or pass
+  the path via `-worker`).
 - Node.js 18+ and pnpm (for the client SDK)
 
 A NATS server is optional: when `-nats` is unset, each node starts an embedded

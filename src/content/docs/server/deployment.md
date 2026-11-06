@@ -94,6 +94,11 @@ NATS — no static peer list is required.
 
 ## Containerizing
 
-A minimal production image needs Go 1.25+ and the mediasoup worker's system
-dependencies (C++ build tools). Build with `make build` and ship the resulting
-`bin/axonkit` binary; the mediasoup worker must be present alongside it.
+A minimal production image needs only two binaries — no Go toolchain and no C++
+build environment at runtime:
+
+- `bin/axonkit`, built with `make build` (build in a separate stage or CI).
+- `mediasoup-worker`, the prebuilt v3.32.2 binary from the
+  [mediasoup releases](https://github.com/versatica/mediasoup/releases). Point
+  the node at it via `-worker` (default `./mediasoup-worker`, i.e. sitting
+  next to the `axonkit` binary in the image).
