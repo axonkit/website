@@ -1,0 +1,11 @@
+{
+  // Static site — no SSR adapter needed. `wrangler deploy` uploads ./dist
+  // as Workers Static Assets; never runs interactive auto-config.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "website",
+  "compatibility_date": "2026-11-06",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  }
+}
