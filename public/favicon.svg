@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="AxonKit">
+  <defs>
+    <linearGradient id="axk-fav" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4F46E5"/>
+      <stop offset="1" stop-color="#06B6D4"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="29" fill="url(#axk-fav)"/>
+  <g stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" fill="none">
+    <path d="M64 32 L32 96"/>
+    <path d="M64 32 L96 96"/>
+    <path d="M43.5 70.5 L84.5 70.5"/>
+  </g>
+  <circle cx="64" cy="32" r="9" fill="#FFFFFF"/>
+  <circle cx="32" cy="96" r="8" fill="#FFFFFF"/>
+  <circle cx="96" cy="96" r="8" fill="#FFFFFF"/>
+  <circle cx="64" cy="70.5" r="7" fill="#22D3EE"/>
+</svg>

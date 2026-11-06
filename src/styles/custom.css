@@ -1,0 +1,301 @@
+/* AxonKit custom theme — LiveKit-inspired dark, gradient-accent design. */
+
+/*
+ * The site is dark-only. Declaring the same palette for both theme
+ * selectors keeps the page readable even when the visitor's OS prefers a
+ * light colour scheme (Starlight would otherwise load its light tokens).
+ */
+:root,
+:root[data-theme='dark'],
+:root[data-theme='light'] {
+	color-scheme: dark;
+
+	/* Brand accent: indigo → cyan gradient family */
+	--axk-indigo: #4f46e5;
+	--axk-cyan: #06b6d4;
+	--axk-gradient: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
+
+	/* Neutral ramp — tuned for readability on the dark background */
+	--sl-color-white: hsl(224, 22%, 97%); /* headings, strong text */
+	--sl-color-gray-1: hsl(224, 18%, 91%);
+	--sl-color-gray-2: hsl(224, 14%, 82%); /* body copy */
+	--sl-color-gray-3: hsl(224, 10%, 68%); /* muted copy, captions */
+	--sl-color-gray-4: hsl(226, 10%, 46%);
+	--sl-color-gray-5: hsl(226, 16%, 24%); /* borders */
+	--sl-color-gray-6: hsl(226, 20%, 14%); /* nav, sidebar, pills */
+	--sl-color-black: hsl(226, 24%, 9%); /* page background */
+
+	/* Override Starlight accent to the AxonKit indigo */
+	--sl-color-accent: hsl(243, 75%, 62%);
+	--sl-color-accent-high: hsl(243, 92%, 84%);
+	--sl-color-accent-low: hsl(243, 60%, 24%);
+
+	/* Semantic tokens that Starlight derives from the ramp */
+	--sl-color-text: var(--sl-color-gray-2);
+	--sl-color-text-accent: var(--sl-color-accent-high);
+	--sl-color-text-invert: hsl(243, 60%, 16%);
+	--sl-color-bg: var(--sl-color-black);
+	--sl-color-bg-nav: var(--sl-color-gray-6);
+	--sl-color-bg-sidebar: var(--sl-color-gray-6);
+	--sl-color-bg-inline-code: hsl(226, 18%, 19%);
+	--sl-color-bg-accent: var(--sl-color-accent-high);
+	--sl-color-hairline: var(--sl-color-gray-6);
+	--sl-color-hairline-light: hsl(226, 16%, 20%);
+	--sl-color-hairline-shade: var(--sl-color-black);
+}
+
+/* The palette is fixed, so the light/dark switch has nothing to toggle. */
+starlight-theme-select {
+	display: none;
+}
+
+/* ---- Gradient headline text ---- */
+.grad {
+	background: var(--axk-gradient);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+/* ---- Hero ---- */
+.hero {
+	grid-template-columns: 100%;
+	position: relative;
+}
+
+/* 100ms-style subtle square grid behind the hero, fading out downwards */
+.hero::before {
+	content: '';
+	position: absolute;
+	inset: -3rem 0 -10rem;
+	background-image:
+		linear-gradient(hsla(226, 45%, 55%, 0.09) 1px, transparent 1px),
+		linear-gradient(90deg, hsla(226, 45%, 55%, 0.09) 1px, transparent 1px);
+	background-size: 3.5rem 3.5rem;
+	-webkit-mask-image: radial-gradient(ellipse 70% 100% at 50% 0%, #000 30%, transparent 75%);
+	mask-image: radial-gradient(ellipse 70% 100% at 50% 0%, #000 30%, transparent 75%);
+	z-index: -1;
+	pointer-events: none;
+}
+
+.hero .stack {
+	text-align: center;
+	align-items: center;
+}
+
+.hero h1 {
+	font-weight: 700;
+	letter-spacing: -0.02em;
+}
+
+.hero .tagline {
+	color: var(--sl-color-gray-2);
+	max-width: 60ch;
+	margin-inline: auto;
+}
+
+.hero .actions a {
+	border-radius: 9999px;
+	padding-inline: 1.4rem;
+	font-weight: 600;
+	transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
+}
+
+.hero .actions a:hover {
+	transform: translateY(-1px);
+}
+
+.hero .actions a[data-variant='primary'],
+.hero .actions a:not([data-variant]) {
+	background: var(--axk-gradient);
+	border: none;
+	color: #fff;
+	box-shadow: 0 10px 30px -10px rgba(79, 70, 229, 0.55);
+}
+
+.hero .actions a[data-variant='primary']:hover,
+.hero .actions a:not([data-variant]):hover {
+	box-shadow: 0 14px 36px -10px rgba(79, 70, 229, 0.7);
+}
+
+/* ---- Hero code window (LiveKit-style editor mock) ---- */
+.hero-code {
+	width: min(100%, 44rem);
+	margin-inline: auto;
+	border-radius: 1rem;
+	overflow: hidden;
+	border: 1px solid hsl(226, 16%, 18%);
+	background: hsl(226, 26%, 10%);
+	box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.6);
+}
+
+.hero-code .bar {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.7rem 1rem;
+	border-bottom: 1px solid var(--sl-color-gray-5);
+	background: hsl(226, 22%, 12%);
+}
+
+.hero-code .bar i {
+	width: 0.7rem;
+	height: 0.7rem;
+	border-radius: 50%;
+	display: inline-block;
+}
+
+.hero-code .bar i:nth-child(1) {
+	background: #ff5f57;
+}
+.hero-code .bar i:nth-child(2) {
+	background: #febc2e;
+}
+.hero-code .bar i:nth-child(3) {
+	background: #28c840;
+}
+
+.hero-code .bar span {
+	margin-left: 0.5rem;
+	font-family: var(--__sl-font-mono);
+	font-size: var(--sl-text-xs);
+	color: var(--sl-color-gray-3);
+}
+
+.hero-code pre {
+	margin: 0;
+	padding: 1.25rem 1.25rem 1.5rem;
+	font-size: 0.85rem;
+	line-height: 1.7;
+	overflow-x: auto;
+}
+
+.hero-code pre code {
+	color: hsl(224, 18%, 89%);
+}
+
+/* ---- Landing section headings: giant, centered, no underline (100ms-style) ---- */
+/* Starlight wraps headings in .sl-heading-wrapper; the h2 itself is inline,
+   so centering must target the wrapper. */
+body:has(.hero) .sl-heading-wrapper.level-h2 {
+	text-align: center;
+}
+
+body:has(.hero) .sl-markdown-content h2 {
+	border-bottom: none;
+	padding-bottom: 0;
+	margin-top: 4.5rem;
+	font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	line-height: 1.15;
+}
+
+body:has(.hero) .sl-markdown-content h2 + p {
+	text-align: center;
+	max-width: 62ch;
+	margin-inline: auto;
+}
+
+/* ---- Eyebrow labels ---- */
+.eyebrow {
+	text-transform: uppercase;
+	font-size: 0.8rem;
+	font-weight: 600;
+	letter-spacing: 0.15em;
+	color: var(--sl-color-accent-high);
+	text-align: center;
+	margin-bottom: 0.9rem;
+}
+
+/* ---- Tech strip (logo-marquee substitute) ---- */
+.strip {
+	margin-top: 3.5rem;
+}
+
+.tech-strip {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1rem 2.75rem;
+	color: var(--sl-color-gray-3);
+	font-size: 1.05rem;
+	font-weight: 600;
+	letter-spacing: 0.01em;
+}
+
+/* ---- Cards ---- */
+.card-grid {
+	gap: 1rem;
+}
+
+/* 100ms-style flat cards: border does the work, no shadows or motion */
+.card {
+	border-radius: 1rem;
+	border: 1px solid hsl(226, 16%, 18%);
+	background: hsl(226, 22%, 11%);
+	transition: border-color 150ms ease;
+}
+
+.card:hover {
+	border-color: hsl(243, 60%, 52%);
+}
+
+.card .title {
+	font-size: var(--sl-text-lg);
+}
+
+.card .icon {
+	border-radius: 0.55rem;
+}
+
+/* ---- Link cards (journey cards) ---- */
+.sl-link-card {
+	border-radius: 1rem;
+	border: 1px solid hsl(226, 16%, 18%);
+	background: hsl(226, 22%, 11%);
+	padding: 1.5rem;
+	transition: border-color 150ms ease;
+}
+
+.sl-link-card:hover {
+	border-color: hsl(243, 60%, 52%);
+}
+
+.sl-link-card .title {
+	font-size: var(--sl-text-lg);
+}
+
+.sl-link-card:hover .icon {
+	color: hsl(243, 92%, 82%);
+}
+
+/* ---- Headings & links ---- */
+.sl-markdown-content h2 {
+	border-bottom: 1px solid var(--sl-color-gray-5);
+	padding-bottom: 0.4rem;
+}
+
+.sl-markdown-content a:not(:where(.hero .actions a, [class*='card'])) {
+	text-decoration-thickness: 1px;
+	text-underline-offset: 3px;
+}
+
+/* ---- Inline code & code blocks ---- */
+.sl-markdown-content code:not(:where(pre code)) {
+	border-radius: 0.35rem;
+	padding: 0.15em 0.4em;
+	color: var(--sl-color-white);
+}
+
+.sl-markdown-content pre {
+	border-radius: 0.75rem;
+	border: 1px solid var(--sl-color-gray-5);
+}
+
+/* ---- Navbar glass effect ---- */
+header {
+	backdrop-filter: blur(12px);
+	background-color: hsla(226, 24%, 9%, 0.82) !important;
+	border-bottom: 1px solid var(--sl-color-gray-5);
+}

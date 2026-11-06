@@ -1,0 +1,20 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": ["../client-sdk-js/src/index.ts"],
+  "tsconfig": "../client-sdk-js/tsconfig.json",
+  "out": "src/content/docs/sdk/api",
+  "plugin": ["typedoc-plugin-markdown"],
+  "readme": "none",
+  "compilerOptions": {
+    "ignoreDeprecations": "6.0"
+  },
+  "excludePrivate": true,
+  "excludeInternal": true,
+  "includeVersion": true,
+  "outputFileStrategy": "members",
+  "entryFileName": "index",
+  "hidePageHeader": true,
+  "hideBreadcrumbs": true,
+  "hidePageTitle": true,
+  "useCodeBlocks": true
+}

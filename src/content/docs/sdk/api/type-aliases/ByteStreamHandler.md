@@ -1,0 +1,25 @@
+---
+title: "ByteStreamHandler"
+---
+
+```ts
+type ByteStreamHandler = (reader, sender) => void;
+```
+
+Defined in: [client-sdk-js/src/types.ts:129](https://github.com/axonkit/client-sdk-js/blob/033ad45339abc3801dfbe904f9382613fb0897a8/src/types.ts#L129)
+
+Handler called when an incoming byte stream is received on a registered topic.
+
+## Parameters
+
+### reader
+
+[`ByteStreamReader`](../classes/ByteStreamReader)
+
+### sender
+
+[`StreamSenderInfo`](../interfaces/StreamSenderInfo)
+
+## Returns
+
+`void`

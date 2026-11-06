@@ -1,0 +1,122 @@
+---
+title: AxonKit
+description: Distributed real-time communication for video, audio, and multi-modal AI.
+template: splash
+hero:
+  title: 'Realtime infrastructure<br/>for <span class="grad">video, audio &amp; AI</span>'
+  tagline: AxonKit is a distributed SFU built on mediasoup and NATS JetStream — a scalable foundation for video conferencing, live streaming, and multi-modal AI applications.
+  actions:
+    - text: Get Started
+      link: /getting-started/introduction/
+      icon: right-arrow
+    - text: View on GitHub
+      link: https://github.com/axonkit
+      icon: github
+      variant: minimal
+---
+
+import HeroCode from '../../components/HeroCode.astro';
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+<HeroCode />
+
+<div class="strip">
+	<div class="eyebrow">Built on proven open source</div>
+	<div class="tech-strip">
+		<span>mediasoup</span>
+		<span>NATS JetStream</span>
+		<span>Go</span>
+		<span>TypeScript</span>
+		<span>WebRTC</span>
+	</div>
+</div>
+
+<div class="eyebrow">Distributed by design</div>
+
+## From a single node to a <span class="grad">multi-region fleet</span>
+
+<CardGrid stagger>
+	<Card title="Video conferencing" icon="laptop">
+		Sub-second joins, simulcast, and dynacast keep meetings smooth from
+		1:1 calls to large all-hands.
+	</Card>
+	<Card title="Live streaming" icon="rocket">
+		Route one upstream to thousands of subscribers across regions without
+		manual relay configuration.
+	</Card>
+	<Card title="Interactive audio rooms" icon="comment">
+		Low-latency audio with adaptive stream quality and server-driven
+		active-speaker detection.
+	</Card>
+	<Card title="Real-time AI agents" icon="puzzle">
+		First-class data channels and RPC for feeding audio, video, and
+		telemetry into agent pipelines.
+	</Card>
+</CardGrid>
+
+<div class="eyebrow">Why AxonKit</div>
+
+## Everything you need to <span class="grad">ship realtime</span>
+
+<CardGrid stagger>
+	<Card title="mediasoup SFU" icon="server">
+		WebRTC media processing via mediasoup workers, with WebRtcServer for
+		efficient port multiplexing.
+	</Card>
+	<Card title="Intelligent routing" icon="random">
+		RIB/FIB-based stream routing across clusters and regions, with RTT
+		probing for cross-region path selection.
+	</Card>
+	<Card title="Self-healing" icon="setting">
+		Automatic failover with make-before-break path switching and loop
+		detection across complex topologies.
+	</Card>
+	<Card title="LiveKit-compatible SDK" icon="code-branch">
+		Familiar Room / Participant / Track model with a TypeScript client SDK
+		published to npm.
+	</Card>
+	<Card title="DataChannel RPC" icon="document">
+		Low-latency bidirectional signaling over the AXON/1.0 protocol, inspired
+		by the NATS wire protocol.
+	</Card>
+	<Card title="Zero-config discovery" icon="star">
+		Nodes join the fleet and announce themselves through NATS KV — no
+		static topology files to maintain.
+	</Card>
+</CardGrid>
+
+## How it works
+
+1. **Run the server.** Start one node locally or a self-discovering fleet
+   across regions — no static configuration required.
+2. **Connect a client.** Drop in the TypeScript SDK and connect with a JWT
+   token; the room is derived from the token's grant.
+3. **Scale media routing.** Streams are automatically forwarded over pipe
+   transports to the nodes where subscribers actually are.
+
+<div class="eyebrow">Start building</div>
+
+## Begin your <span class="grad">realtime journey</span>
+
+<CardGrid>
+	<LinkCard
+		title="Quick Start"
+		description="Run the server and connect your first client in minutes."
+		href="/getting-started/quickstart/"
+	/>
+	<LinkCard
+		title="Architecture"
+		description="Understand nodes, clusters, regions, and the RIB/FIB routing model."
+		href="/server/architecture/"
+	/>
+	<LinkCard
+		title="Protocol"
+		description="Dig into the AXON/1.0 wire format and connection flow."
+		href="/protocol/connection-flow/"
+	/>
+	<LinkCard
+		title="API Reference"
+		description="The complete TypeScript SDK surface, generated from source."
+		href="/sdk/api/"
+	/>
+</CardGrid>

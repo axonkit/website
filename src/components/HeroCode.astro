@@ -1,0 +1,21 @@
+---
+// LiveKit-style code window shown on the landing page.
+---
+<div class="hero-code">
+	<div class="bar">
+		<i></i><i></i><i></i>
+		<span>quickstart.ts</span>
+	</div>
+	<pre><code>{`import { Room, RoomEvent } from '@axonkit/client-sdk-js';
+
+const room = new Room({ dynacast: true });
+
+await room.connect('https://your-server.com', token);
+
+room.on(RoomEvent.TrackSubscribed, (track) => {
+  document.body.appendChild(track.attach());
+});
+
+await room.localParticipant.setCameraEnabled(true);
+await room.localParticipant.setMicrophoneEnabled(true);`}</code></pre>
+</div>
